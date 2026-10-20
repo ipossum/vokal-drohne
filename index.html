@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101b2d">
+  <meta name="description" content="Ein kleines Sprachspiel: Steuere eine Drohne mit den Vokalen A, E, I, O und entschärfe Bomben mit U.">
+  <title>Vokal-Drohne – Bomben entschärfen</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SPRECHEN · STEUERN · ENTSCHÄRFEN</p>
+        <h1>Vokal-Drohne</h1>
+      </div>
+      <button id="restartBtn" class="quiet-button" type="button" aria-label="Spiel neu starten">↻ Neu starten</button>
+    </header>
+
+    <section class="intro-panel" aria-label="Spielanleitung">
+      <p>Sprich einen Vokal deutlich aus, um die Drohne zu bewegen. Fliege über alle Bomben und entschärfe sie mit <strong>U</strong>.</p>
+      <div class="vowel-legend">
+        <span><b>A</b><small>vorwärts ↑</small></span>
+        <span><b>E</b><small>rechts →</small></span>
+        <span><b>I</b><small>rückwärts ↓</small></span>
+        <span><b>O</b><small>links ←</small></span>
+        <span class="defuse-key"><b>U</b><small>entschärfen</small></span>
+      </div>
+    </section>
+
+    <section class="status-row" aria-live="polite">
+      <div class="status-card"><span class="status-label">Entschärft</span><strong id="bombCount">0 / 5</strong></div>
+      <div class="status-card"><span class="status-label">Letzter Vokal</span><strong id="lastVowel">–</strong></div>
+      <div class="status-card"><span class="status-label">Mikrofon</span><strong id="micStatus">Nicht gestartet</strong></div>
+    </section>
+
+    <section class="game-panel">
+      <div class="board-heading">
+        <div><h2>Bombenfeld</h2><p id="gameMessage">Aktiviere das Mikrofon und sprich „A“.</p></div>
+        <div class="signal" aria-label="Mikrofonsignal"><span id="signalBar"></span></div>
+      </div>
+      <div id="gameBoard" class="game-board" role="img" aria-label="Drohne und Bomben auf einem Spielfeld"></div>
+      <div class="board-footer"><span>⬡ Drohne</span><span>● Bombe</span><span>◎ Ziel erreicht – Bombe markiert</span></div>
+    </section>
+
+    <section class="controls-panel">
+      <div class="mic-actions">
+        <button id="micBtn" class="primary-button" type="button">🎙 Mikrofon aktivieren</button>
+        <span id="supportNote" class="support-note">Für den Mikrofonzugriff muss die Seite über HTTPS geöffnet werden.</span>
+      </div>
+      <div class="manual-controls" aria-label="Steuerung alternativ per Tippen">
+        <p class="control-title">Oder zum Testen antippen</p>
+        <div class="control-grid">
+          <button data-vowel="A" class="vowel-button" type="button"><b>A</b><span>↑ Vorwärts</span></button>
+          <button data-vowel="E" class="vowel-button" type="button"><b>E</b><span>→ Rechts</span></button>
+          <button data-vowel="I" class="vowel-button" type="button"><b>I</b><span>↓ Rückwärts</span></button>
+          <button data-vowel="O" class="vowel-button" type="button"><b>O</b><span>← Links</span></button>
+          <button data-vowel="U" class="vowel-button u-button" type="button"><b>U</b><span>Entschärfen</span></button>
+        </div>
+      </div>
+    </section>
+
+    <footer><span>Vokal-Drohne · Lernspiel-Prototyp</span><span>Keine Daten werden gespeichert oder übertragen.</span></footer>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>
